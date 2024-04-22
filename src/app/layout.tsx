@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
+import { styled } from "../../node_modules/@kuma-ui/core/dist/styled";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const ThisIsStyledComponent = styled.div`
+  padding: 8px;
+  color: white;
+  background: black;
+  @media (max-width: 500px) {
+    color: blue;
+  }
+`;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <KumaRegistry>
+          {children}
+          <ThisIsStyledComponent />
+        </KumaRegistry>
+      </body>
     </html>
   );
 }
