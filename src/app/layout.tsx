@@ -2,17 +2,29 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { KumaRegistry } from "@kuma-ui/next-plugin/registry";
-import { styled } from "../../node_modules/@kuma-ui/core/dist/styled";
+import { styled, Flex } from "@kuma-ui/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const ThisIsStyledComponent = styled.div`
+  display: flex;
+  justify-content: center;
   padding: 8px;
   color: white;
   background: black;
   @media (max-width: 500px) {
     color: blue;
   }
+`;
+
+export const ThisIsStyledComponentTwo = styled(ThisIsStyledComponent)`
+  color: blue;
+`;
+
+export const ThisIsStyledComponentTree = styled(ThisIsStyledComponentTwo)`
+  padding: 8px;
+  background-color: #f00;
+  color: white;
 `;
 
 export const metadata: Metadata = {
@@ -29,8 +41,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <KumaRegistry>
+          <ThisIsStyledComponent>AAAAAAAAAAAAAAAAA</ThisIsStyledComponent>
+          <ThisIsStyledComponentTwo>BBBBBBBBBBBB</ThisIsStyledComponentTwo>
+          <ThisIsStyledComponentTree justifyItems="center">
+            CCcccccccccc
+          </ThisIsStyledComponentTree>
           {children}
-          <ThisIsStyledComponent />
         </KumaRegistry>
       </body>
     </html>
