@@ -6,7 +6,7 @@ import { styled, Flex } from "@kuma-ui/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const ThisIsStyledComponent = styled.div`
+const ThisIsStyledComponent = styled.div`
   display: flex;
   justify-content: center;
   padding: 8px;
@@ -17,11 +17,11 @@ export const ThisIsStyledComponent = styled.div`
   }
 `;
 
-export const ThisIsStyledComponentTwo = styled(ThisIsStyledComponent)`
+const ThisIsStyledComponentTwo = styled(ThisIsStyledComponent)`
   color: blue;
 `;
 
-export const ThisIsStyledComponentTree = styled(ThisIsStyledComponentTwo)`
+const ThisIsStyledComponentTree = styled(ThisIsStyledComponentTwo)`
   padding: 8px;
   background-color: #f00;
   color: white;
@@ -43,9 +43,7 @@ export default function RootLayout({
         <KumaRegistry>
           <ThisIsStyledComponent>AAAAAAAAAAAAAAAAA</ThisIsStyledComponent>
           <ThisIsStyledComponentTwo>BBBBBBBBBBBB</ThisIsStyledComponentTwo>
-          <ThisIsStyledComponentTree justifyItems="center">
-            CCcccccccccc
-          </ThisIsStyledComponentTree>
+          <ThisIsStyledComponentTree>CCcccccccccc</ThisIsStyledComponentTree>
           {children}
         </KumaRegistry>
       </body>
